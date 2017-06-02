@@ -4,7 +4,7 @@
     tools:context="com.crixmod.sailorcast.view.fragments.SearchResultFragment">
 <GridView
     android:id="@+id/result_grid"
-    android:numColumns="3"
+    android:numColumns="5"
     android:padding="2dp"
     android:verticalSpacing="2dp"
     android:horizontalSpacing="2dp"
