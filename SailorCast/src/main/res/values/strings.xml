@@ -5,10 +5,10 @@
     <string name="title_activity_album_list">AlbumListActivity</string>
     <string name="title_activity_album_detail">AlbumDetailActivity</string>
     <string name="title_activity_search_results">搜索结果</string>
-    <string name="site_sohu">搜狐视频</string>
-    <string name="site_youku">优酷视频</string>
-    <string name="site_letv">乐视视频</string>
-    <string name="site_iqiyi">爱奇艺视频</string>
+    <string name="site_sohu">_______________搜 狐 视 频_______________</string>
+    <string name="site_youku">_______________优 酷 视 频_______________</string>
+    <string name="site_letv">_______________乐 视 视 频_______________</string>
+    <string name="site_iqiyi">______________爱 奇 艺 视 频______________</string>
     <string name="fail_reason_no_results">对不起，没有搜索到任何结果...</string>
     <string name="fail_reason_searching">努力搜索中...</string>
     <string name="director">导演：</string>
@@ -57,7 +57,7 @@
     <string name="title_activity_bookmark">我的收藏</string>
     <string name="title_activity_history">播放历史</string>
     <string name="actor">演员：</string>
-    <string name="album_no_videos">对不起，没有找到可供播放的影片...</string>
+    <string name="album_no_videos">对不起，该网站没有相关视频...</string>
     <string name="action_order_forward">顺序显示</string>
     <string name="action_order_backward">倒序显示</string>
     <string name="err_wrong_data">数据解析错误</string>

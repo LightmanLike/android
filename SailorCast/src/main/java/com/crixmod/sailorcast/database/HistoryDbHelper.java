@@ -8,7 +8,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import com.crixmod.sailorcast.model.SCAlbum;
-import com.crixmod.sailorcast.model.SCAlbums;
 import com.crixmod.sailorcast.model.SCVideo;
 
 import java.text.SimpleDateFormat;

@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,6 +30,9 @@ public class LauncherFragment extends Fragment {
     private GridView mGrid;
     private CompassAdapter mAdapter;
 
+    private int mScreenWidth;
+    private int mScreenHeight;
+    private ViewGroup.LayoutParams para;
     public static LauncherFragment newInstance() {
         LauncherFragment fragment = new LauncherFragment();
         Bundle args = new Bundle();
@@ -44,13 +48,16 @@ public class LauncherFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mAdapter = new CompassAdapter(getActivity());
+        Display display = getActivity().getWindowManager().getDefaultDisplay();
+        mScreenHeight = display.getHeight();
+        mScreenWidth = display.getWidth();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view =  inflater.inflate(R.layout.fragment_launcher, container, false);
+        View view = inflater.inflate(R.layout.fragment_launcher, container, false);
         mGrid = (GridView) view.findViewById(R.id.grid);
         mGrid.setAdapter(mAdapter);
 
@@ -58,7 +65,7 @@ public class LauncherFragment extends Fragment {
     }
 
 
-    private class CompassAdapter  extends BaseAdapter {
+    private class CompassAdapter extends BaseAdapter {
         private Context mContext;
 
         private CompassAdapter(Context mContext) {
@@ -85,8 +92,8 @@ public class LauncherFragment extends Fragment {
             final SCChannel channel = getItem(position);
             ImageView imageView;
             TextView textView;
-            if(convertView == null) {
-                convertView =((Activity) mContext).getLayoutInflater().inflate(R.layout.item_gridview_compass,parent,false);
+            if (convertView == null) {
+                convertView = ((Activity) mContext).getLayoutInflater().inflate(R.layout.item_gridview_compass, parent, false);
                 imageView = (ImageView) convertView.findViewById(R.id.icon_image);
                 textView = (TextView) convertView.findViewById(R.id.icon_text);
 
@@ -95,36 +102,62 @@ public class LauncherFragment extends Fragment {
                 textView = (TextView) convertView.findViewById(R.id.icon_text);
             }
             switch (channel.getChannelID()) {
-                case    SCChannel.SHOW:
+                case SCChannel.SHOW:
+                    para = imageView.getLayoutParams();
+                    para.height = mScreenHeight / 11;//一屏幕显示8行
+                    para.width = (mScreenWidth - 50) / 12;//一屏显示两列
+                    imageView.setLayoutParams(para);
                     imageView.setImageDrawable(getResources().getDrawable(R.drawable.ic_show));
                     break;
-                case    SCChannel.DOCUMENTARY:
+                case SCChannel.DOCUMENTARY:
+                    para = imageView.getLayoutParams();
+                    para.height = mScreenHeight / 11;//一屏幕显示8行
+                    para.width = (mScreenWidth - 50) / 12;//一屏显示两列
+                    imageView.setLayoutParams(para);
                     imageView.setImageDrawable(getResources().getDrawable(R.drawable.ic_documentary));
                     break;
-                case    SCChannel.COMIC:
-                    imageView.setImageDrawable(getResources().getDrawable(R.drawable.ic_comic));
+                case SCChannel.COMIC:
+                    para = imageView.getLayoutParams();
+                    para.height = mScreenHeight / 11;//一屏幕显示8行
+                    para.width = (mScreenWidth - 50) / 12;//一屏显示两列
+                    imageView.setLayoutParams(para);imageView.setImageDrawable(getResources().getDrawable(R.drawable.ic_comic));
                     break;
-                case    SCChannel.MOVIE:
-                    imageView.setImageDrawable(getResources().getDrawable(R.drawable.ic_movie));
+                case SCChannel.MOVIE:
+                    para = imageView.getLayoutParams();
+                    para.height = mScreenHeight / 11;//一屏幕显示8行
+                    para.width = (mScreenWidth - 50) / 12;//一屏显示两列
+                    imageView.setLayoutParams(para);imageView.setImageDrawable(getResources().getDrawable(R.drawable.ic_movie));
                     break;
-                case    SCChannel.MUSIC:
-                    imageView.setImageDrawable(getResources().getDrawable(R.drawable.ic_music));
+                case SCChannel.MUSIC:
+                    para = imageView.getLayoutParams();
+                    para.height = mScreenHeight / 11;//一屏幕显示8行
+                    para.width = (mScreenWidth - 50) / 12;//一屏显示两列
+                    imageView.setLayoutParams(para);imageView.setImageDrawable(getResources().getDrawable(R.drawable.ic_music));
                     break;
-                case    SCChannel.VARIETY:
-                    imageView.setImageDrawable(getResources().getDrawable(R.drawable.ic_variety));
+                case SCChannel.VARIETY:
+                    para = imageView.getLayoutParams();
+                    para.height = mScreenHeight / 11;//一屏幕显示8行
+                    para.width = (mScreenWidth - 50) / 12;//一屏显示两列
+                    imageView.setLayoutParams(para);imageView.setImageDrawable(getResources().getDrawable(R.drawable.ic_variety));
                     break;
-                case    SCChannel.LOCAL_BOOKMARK:
-                    imageView.setImageDrawable(getResources().getDrawable(R.drawable.ic_bookmark));
+                case SCChannel.LOCAL_BOOKMARK:
+                    para = imageView.getLayoutParams();
+                    para.height = mScreenHeight / 11;//一屏幕显示8行
+                    para.width = (mScreenWidth - 50) / 12;//一屏显示两列
+                    imageView.setLayoutParams(para);imageView.setImageDrawable(getResources().getDrawable(R.drawable.ic_bookmark));
                     break;
-                case    SCChannel.LOCAL_HISTORY:
-                    imageView.setImageDrawable(getResources().getDrawable(R.drawable.ic_history));
+                case SCChannel.LOCAL_HISTORY:
+                    para = imageView.getLayoutParams();
+                    para.height = mScreenHeight / 11;//一屏幕显示8行
+                    para.width = (mScreenWidth - 50) / 12;//一屏显示两列
+                    imageView.setLayoutParams(para);imageView.setImageDrawable(getResources().getDrawable(R.drawable.ic_history));
                     break;
             }
-
+            textView.setTextSize(18);
             textView.setText(channel.toString());
 
 
-            if( !channel.isLocalChannel()) {
+            if (!channel.isLocalChannel()) {
                 convertView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -133,7 +166,7 @@ public class LauncherFragment extends Fragment {
                 });
             }
 
-            if(channel.getChannelID() == SCChannel.LOCAL_BOOKMARK) {
+            if (channel.getChannelID() == SCChannel.LOCAL_BOOKMARK) {
                 convertView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -142,7 +175,7 @@ public class LauncherFragment extends Fragment {
                 });
             }
 
-            if(channel.getChannelID() == SCChannel.LOCAL_HISTORY) {
+            if (channel.getChannelID() == SCChannel.LOCAL_HISTORY) {
                 convertView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -154,5 +187,5 @@ public class LauncherFragment extends Fragment {
             return convertView;
         }
     }
-    
+
 }
