@@ -44,10 +44,10 @@ implements AlbumFilterDialog.OnAlbumFilterDialogAction
         mChannelID = intent.getIntExtra(EXTRA_CHANNEL_ID,0);
 
         mViewPager = (ViewPager) findViewById(R.id.pager);
-        mSlidingTabLayout = (SlidingTabLayout) findViewById(R.id.sliding_tabs);
+//        mSlidingTabLayout = (SlidingTabLayout) findViewById(R.id.sliding_tabs);
         mPagerAdapter = new SitePagerAdapter(getSupportFragmentManager(), this, mChannelID);
         mViewPager.setAdapter(mPagerAdapter);
-        mSlidingTabLayout.setViewPager(mViewPager);
+//        mSlidingTabLayout.setViewPager(mViewPager);
 
         SCChannel channel = new SCChannel(mChannelID);
         setTitle(channel.toString());

@@ -9,8 +9,8 @@ import com.crixmod.sailorcast.SailorCast;
 public class SCSite {
     public static int UNKNOWN = -1;
     public static int SOHU = 3;
-    public static int YOUKU = 0;
-    public static int LETV = 1;
+    public static int YOUKU = 1;
+    public static int LETV = 0;
     public static int IQIYI = 2;
     private String mSiteName;
 
